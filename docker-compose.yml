@@ -1,8 +1,24 @@
 version: '3.8'
+
 services:
   web:
     build: .
+    image: cotabox-challenge:latest
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+      - DATABASE_FILE=/data/database.sqlite
+    volumes:
+      - data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL","wget -qO- http://localhost:3000/ || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  data:
+    driver: local
+
