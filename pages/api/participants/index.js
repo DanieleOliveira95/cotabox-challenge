@@ -21,18 +21,23 @@ return res.status(200).json({ data: participants });
 
 
 if (method === "POST") {
-const result = safeParseParticipant(req.body ?? {});
-if (!result.success) {
-const msg = result.error.issues.map((i) => i.message).join("; ");
-return res.status(400).json({ error: msg });
-}
+	const result = safeParseParticipant(req.body ?? {});
+	if (!result.success) {
+		const msg = result.error.issues.map((i) => i.message).join('; ');
+		return res.status(400).json({ error: msg });
+	}
 
+	const payload = result.data;
 
-const payload = result.data;
-const id = String(Date.now());
-const created = { id, ...payload };
-participants = [...participants, created];
-return res.status(201).json({ data: created });
+	const currentTotal = participants.reduce((s, p) => s + Number(p.participation || 0), 0);
+	if (currentTotal + Number(payload.participation) > 100) {
+		return res.status(400).json({ error: 'A soma das participações não pode ultrapassar 100%.' });
+	}
+
+	const id = String(Date.now());
+	const created = { id, ...payload };
+	participants = [...participants, created];
+	return res.status(201).json({ data: created });
 }
 
 
