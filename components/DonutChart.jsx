@@ -20,32 +20,31 @@ import {
     
     
     export default function DonutChart({ rows }) {
-    const data = rows.map((r) => ({
-    name: `${r.firstName} ${r.lastName}`,
-    value: r.participation,
-    }));
-    
-    
-    return (
-    <div className="h-72 w-full">
-    <ResponsiveContainer width="100%" height="100%">
-    <PieChart>
-    <Pie
-    data={data}
-    dataKey="value"
-    nameKey="name"
-    innerRadius={60}
-    outerRadius={100}
-    paddingAngle={2}
-    >
-    {data.map((_, i) => (
-    <Cell key={i} fill={COLORS[i % COLORS.length]} />)
-    )}
-    </Pie>
-    <Tooltip />
-    <Legend />
-    </PieChart>
-    </ResponsiveContainer>
-    </div>
-    );
-    }
+        const data = rows.map((r) => ({
+        name: `${r.firstName} ${r.lastName}`,
+        value: r.participation,
+        }));
+
+        return (
+            <div className="chart-wrapper">
+                <ResponsiveContainer width="100%" height={320}>
+        <PieChart>
+        <Pie
+        data={data}
+        dataKey="value"
+        nameKey="name"
+        innerRadius={60}
+        outerRadius={100}
+        paddingAngle={2}
+        >
+        {data.map((_, i) => (
+        <Cell key={i} fill={COLORS[i % COLORS.length]} />)
+        )}
+        </Pie>
+        <Tooltip />
+                    <Legend layout="vertical" verticalAlign="middle" align="right" />
+        </PieChart>
+                </ResponsiveContainer>
+            </div>
+        );
+        }
