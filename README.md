@@ -23,7 +23,6 @@ Bem-vindo(a)! Este repositório é uma implementação do desafio Fullstack da C
 - `components/` — componentes React reutilizáveis (HeaderBar, Table, DonutChart, Form).
 - `lib/` — helpers (ex.: `sqlite.js`, `validation.js`).
 - `styles/` — `globals.css` com Tailwind e ajustes.
-- `server/` — código auxiliar para rodar fora do Next (se presente).
 
 ## Como rodar (dev)
 1. Instale dependências:
