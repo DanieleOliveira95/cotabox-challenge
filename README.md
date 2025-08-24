@@ -1,4 +1,4 @@
-# Cotabox Challenge — versão amigável
+# Cotabox Challenge 
 
 Bem-vindo(a)! Este repositório é uma implementação do desafio Fullstack da Cotabox. A ideia aqui é um app simples para gerenciar participantes, mostrar estatísticas e servir como demo técnico com frontend em Next.js e uma API leve que persiste dados em SQLite.
 
