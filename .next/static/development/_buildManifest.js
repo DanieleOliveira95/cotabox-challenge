@@ -1,4 +1,7 @@
 self.__BUILD_MANIFEST = {
+  "/_error": [
+    "./static/chunks/pages/_error.js"
+  ],
   "__rewrites": {
     "afterFiles": [],
     "beforeFiles": [],
@@ -7,7 +10,6 @@ self.__BUILD_MANIFEST = {
   "sortedPages": [
     "/_app",
     "/_error",
-    "/api/participants",
     "/api/participants/node_modules/@next/env/dist",
     "/api/participants/node_modules/@next/env/dist/index.d",
     "/api/participants/node_modules/@reduxjs/toolkit/dist/cjs",
